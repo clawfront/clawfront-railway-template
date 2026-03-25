@@ -5,11 +5,14 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-# Build with: DOCKER_BUILDKIT=1 docker build --secret id=clawfront_registry_token,env=CLAWFRONT_REGISTRY_TOKEN .
+# Railway-compatible auth path using build arg
+ARG CLAWFRONT_REGISTRY_TOKEN
+RUN test -n "$CLAWFRONT_REGISTRY_TOKEN" || (echo "ERROR: CLAWFRONT_REGISTRY_TOKEN build arg is required" && exit 1)
+
+ENV CLAWFRONT_REGISTRY_TOKEN=${CLAWFRONT_REGISTRY_TOKEN}
+
 COPY package.json .npmrc ./
-RUN --mount=type=secret,id=clawfront_registry_token \
-    CLAWFRONT_REGISTRY_TOKEN="$(cat /run/secrets/clawfront_registry_token)" \
-    pnpm install --prod --frozen-lockfile=false && \
+RUN pnpm install --prod --frozen-lockfile=false && \
     rm -f .npmrc
 
 ENV NODE_ENV=production

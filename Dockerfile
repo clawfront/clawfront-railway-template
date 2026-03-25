@@ -1,6 +1,6 @@
 FROM node:22-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends git curl cron ca-certificates && rm -rf /var/lib/apt/lists/*
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
@@ -16,6 +16,7 @@ RUN pnpm install --prod --frozen-lockfile=false && \
     rm -f .npmrc
 
 ENV NODE_ENV=production
+ENV PORT=3000
 
 EXPOSE 3000
 

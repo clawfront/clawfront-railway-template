@@ -1,0 +1,8 @@
+{
+  "name": "clawfront-deploy",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@clawfront/clawfront": "latest"
+  }
+}

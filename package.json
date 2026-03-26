@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
-    "@clawfront/clawfront": "0.8.20",
+    "@clawfront/clawfront": "0.8.21",
     "openclaw": "2026.3.24"
   }
 }

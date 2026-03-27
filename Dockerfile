@@ -1,6 +1,9 @@
 FROM node:22-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends git curl cron ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends git curl cron ca-certificates chromium && rm -rf /var/lib/apt/lists/*
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV CHROMIUM_PATH=/usr/bin/chromium
 
 WORKDIR /app
 

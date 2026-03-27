@@ -1,0 +1,11 @@
+services:
+  clawfront:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    env_file: .env
+    volumes:
+      - clawfront-data:/data
+volumes:
+  clawfront-data:

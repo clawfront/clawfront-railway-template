@@ -8,6 +8,11 @@
     "startCommand": "npm exec clawfront start",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10,
+    "volumes": [
+      {
+        "mountPath": "/data"
+      }
+    ],
     "variables": {
       "CLAWFRONT_REGISTRY_TOKEN": {
         "description": "GitHub PAT with read:packages scope for accessing the clawfront registry",

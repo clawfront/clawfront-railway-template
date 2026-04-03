@@ -14,10 +14,6 @@
       }
     ],
     "variables": {
-      "CLAWFRONT_REGISTRY_TOKEN": {
-        "description": "GitHub PAT with read:packages scope for accessing the clawfront registry",
-        "required": true
-      },
       "SETUP_PASSWORD": {
         "description": "Password for initial setup access",
         "required": true
